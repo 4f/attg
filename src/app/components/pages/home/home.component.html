@@ -1,0 +1,82 @@
+<div class='container'>
+  <div class='left'>
+
+    <form (submit)="submit($event)">
+
+      <div class="form-group select-city">
+        <div class='title'>City</div>
+        <i></i>
+        <select
+          class="form-control"
+          id="power"
+          required
+          #t
+          (change)='changeCity(t.value)'
+        >
+          <option value='0' selected>None</option>
+          <option
+            *ngFor="let city of cities"
+            [value]="city.id"
+            [selected]="city.id == filter.data.city_id"
+          >
+            {{city.name}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group checkbox-categories">
+        <div class='title'>Categories</div>
+        <ul *ngFor="let category of categories" class="unstyled">
+          <li>
+            <input
+              class="checkbox"
+              type="checkbox"
+              [attr.id]='"category-" + category.id'
+              [checked]='category.__selected'
+              (change)='changeCategory($event, category.id)'
+            />
+            <label [attr.for]='"category-" + category.id'>{{category.name}}</label><span class='count'>({{category.__size}})</span>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="form-group slider-price">
+        <div class='title'>Price</div>
+        <ng5-slider [(value)]="filter.data.price_start" [(highValue)]="filter.data.price_end" [options]="options"></ng5-slider>
+        <div class='values-and-submit'>
+          <div class='values'>
+            ${{filter.data.price_start}}<span class='delimeter'>-</span>${{filter.data.price_end}}
+          </div>
+          <button class='submit'>Filter</button>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+
+  <div class='right'>
+    <div *ngFor="let item of filtered_data" class="item">
+      <div class='first-row'>
+        <div class='overlay'></div>
+        <div class='city'>
+          {{getCityById(item.city).name}}
+        </div>
+      </div>
+      <div class='second-row'>
+        <div class='name'> {{item.name}} </div>
+        <div class='category-and-price'>
+          <div class='category'> {{getCategoryById(item.category).name}} </div>
+          <div class='price'> ${{item.price}} </div>
+        </div>
+      </div>
+    </div>
+    <div class='_placeholder item' *ngIf="filtered_data.length % 3 === 2">
+      <div class='first-row'></div>
+      <div class='second-row'></div>
+    </div>
+  </div>
+  
+</div>
+

@@ -1,0 +1,265 @@
+.container {
+  display: flex;
+  .left {
+    width: 288px;
+    margin-right: 72px;
+
+  }
+
+  .right {
+    min-width: 720px;
+  }
+}
+
+.left {
+  position: relative;
+
+  .title {
+    font-weight: 700;
+    font-family: arial;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 28px;
+    text-transform: uppercase; 
+  }
+
+  .form-group {
+    margin-bottom: 56px;
+  }
+
+  .select-city {
+    i {
+      position: absolute;
+      top: 66px;
+      right: 16px;
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+    }
+    select {
+      width: 100%;
+      padding: 12px 35px 12px 12px;
+      font-family: monospace;
+      font-size: 16px;
+      border: 1px solid #CCC;
+      /*height: 42px;*/
+      appearance: none;
+      background: transparent;
+    }
+  }
+
+  .checkbox-categories {
+    label {
+      font-family: monospace;
+    }
+    .count {
+      font-family: monospace;
+      padding-left: 8px;
+      color: lightgray;
+    }
+  }
+
+  .slider-price {
+    .title {
+      margin-bottom: 0px;
+    }
+    .values-and-submit {
+      display: flex;
+      margin-top: 20px;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 18px;
+      justify-content: space-between;
+      align-items: center;
+
+      .delimeter {
+        padding: 0px 12px;
+      }
+
+      .submit {
+        font-family: tahoma;
+        font-weight: 700;
+        font-size: 12px;
+        color: white;
+        background: #1cb9ff;
+        text-transform: uppercase;
+        padding: 10px 0;
+        width: 90px;
+        border: 0px;
+      }
+    }
+  }
+
+}
+
+.right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  ._placeholder {
+    visibility: hidden;
+  }
+  .item {
+    width: 30%;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border: 1px solid lightgray;
+    max-height: 310px;
+    .first-row {
+      background-image: url(/assets/imgs/desert.jpg);
+      width: 100%;
+      height: 192px;
+      background-size: cover;
+      position: relative;
+      .overlay {
+        width: 100%;
+        height: 100%;
+      }
+      .city {
+        bottom: 12px;
+        left: 12px;
+        color: white;
+        font-family: monospace;
+        font-size: 13px;
+        position: absolute;
+      }
+    }
+    .second-row {
+      padding: 12px;
+      height:  92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .name {
+        font-weight: 700;
+        font-family: tahoma;
+        font-size: 15px;
+        line-height: 150%;
+      }
+      .category-and-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .category {
+          font-family: monospace;
+          font-weight: 700;
+          color: lightgray;
+        }
+        .price {
+          font-family: monospace;
+          font-weight: 700;
+          font-size: 18px;
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 0px 6px 10px 0px lightgray;
+      cursor: pointer;
+      .overlay {
+        background: #0d08;
+      }
+    }
+  }
+}
+
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 1px solid lightgray;
+  }
+
+  &:hover + label:before {
+    background: #1cb9ffaa;
+  }
+  
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+
+  &:checked + label:before {
+    background: white;
+    border-color: #1cb9ff;
+  }
+  
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+    border-color: #aaa;
+  }
+
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    background: #1cb9ff;
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+      2px 0 0 #1cb9ff,
+      4px 0 0 #1cb9ff,
+      4px -2px 0 #1cb9ff,
+      4px -4px 0 #1cb9ff,
+      4px -6px 0 #1cb9ff,
+      4px -8px 0 #1cb9ff;
+    transform: rotate(45deg);
+  }
+}
+
+.unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 20px 0;
+}
+
+::ng-deep {
+  .slider-price {
+    /*background: red;*/
+    .ng5-slider-bubble {
+      display: none !important;
+    }
+
+    .ng5-slider {
+      .ng5-slider-pointer {
+        width: 16px;
+        height: 16px;
+        top: -7px;
+        &:after {
+          width: 12px;
+          height: 12px;
+          top: 2px;
+          left: 2px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

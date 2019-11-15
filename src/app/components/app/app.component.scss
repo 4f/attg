@@ -1,0 +1,13 @@
+:host {
+  position: relative;
+  min-height: 100vh;
+  min-width: 1200px;
+  margin: 0px;
+  display: block;
+
+  .content-container {
+    margin: 48px 96px;
+    padding-bottom: 180px;
+  }
+
+}
